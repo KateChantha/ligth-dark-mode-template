@@ -50,14 +50,28 @@ const switchTheme = (event) => {
 
   if (event.target.checked) {
     document.documentElement.setAttribute('data-theme', 'dark');
+    localStorage.setItem('theme', 'dark');
     darkMode();
   } else {
-    document.documentElement.setAttribute('data-theme', '');
+    document.documentElement.setAttribute('data-theme', 'light');
+    localStorage.setItem('theme', 'light');
     lightMode();
   }
-
-
 }
 
 // Event Listener
 toggleSwitch.addEventListener('change', switchTheme);
+
+// Check Local Storage for Theme
+const currentTheme = localStorage.getItem('theme');
+
+// check if currentTheme is not Null, then use the currenTheme
+if (currentTheme) {
+  document.documentElement.setAttribute('data-theme', currentTheme);
+
+  // if currentTheme is dark
+  if (currentTheme === 'dark') {
+    toggleSwitch.checked = true;
+    darkMode();
+  }
+}
