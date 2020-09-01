@@ -188,6 +188,7 @@ p {
 .theme-switch-wrapper {
   display: flex;
   align-items: center;
+  /* place z-index higher than navigation so it will appear on top of nav*/
   z-index: 100;
   position: fixed;
   right: 25px;
